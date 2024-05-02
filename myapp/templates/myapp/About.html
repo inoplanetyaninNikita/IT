@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<header>
+    {% include "myapp/Snippets/Header.html"%}
+</header>
+
+<body>
+    <h1>{{ Author.last_name }}  {{ Author.first_name }}  {{ Author.middle_name }}</h1>
+
+    {% for work, authors in data %}
+        {% include "myapp/Snippets/BookWithAuthor.html" with work=work authors=authors %}
+    {% endfor %}
+</body>
+</html>

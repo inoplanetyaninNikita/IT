@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<header>
+    {% include "myapp/Snippets/Header.html"%}
+</header>
+
+<body>
+    <h1>План</h1>
+    <a href="{% url 'PlanRegister' %}">Регистрация работы</a>
+    {% for work, authors in data %}
+    <div class="row">
+        <h5>{{ work.type }}</h5>
+        <div>
+            {% if work.number %}
+                {{ work.number }}
+            {% endif%}
+            <div>"{{ work.title }}"</div>
+            <div>{{ work.date }}</div>
+            <div>{{ work.status }}</div>
+            {% for author in authors %}
+                {% if author.user_id %}
+                    <a href="{% url 'About' %}?userid={{ author.user_id }}">{{ author.last_name }} {{ author.first_name }} {{ author.middle_name }}</a>,
+                {% else %}
+                    {{ author.last_name }} {{ author.first_name }} {{ author.middle_name }},
+                {% endif %}
+            {% endfor %}
+            <div>________________</div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+</body>
+</html>

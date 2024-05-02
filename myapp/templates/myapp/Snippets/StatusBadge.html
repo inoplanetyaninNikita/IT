@@ -1,0 +1,9 @@
+{% if work.agreement_author_id >= 0 %}
+    {% if work.agreement_date %}
+        <p class="form-control-static" id="staticInput">{{ work.agreement_date }}</p>
+    {% else %}
+    <span class="badge bg-danger">Отклонено</span>
+    {% endif %}
+{% else %}
+    <span class="badge bg-warning">На рассмотрении</span>
+{% endif %}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<header>
+    {% include "myapp/Snippets/Header.html"%}
+</header>
+
+<body>
+    <h1>Цифровая библиотека</h1>
+
+    <input type="text" id="urlInput" placeholder="Название методички">
+    <button onclick="makeRequest()">Load Data</button>
+
+
+    <script>
+        function makeRequest() {
+
+     document.getElementById('output').textContent = '';
+    var value = document.getElementById('urlInput').value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "Search?find="+value, true);
+
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            var response = JSON.parse(xhr.responseText); // Преобразование JSON-строки в объект JavaScript
+
+        var containerDiv = document.createElement('div');
+
+        // Проверяем наличие массива "data" в ответе
+        if (response.hasOwnProperty('data')) {
+            // Получаем массив "data"
+            var data = response.data;
+
+            // Перебираем каждый элемент массива "data"
+            data.forEach(function(item) {
+
+                var h = document.createElement('h5');
+                containerDiv.appendChild(h);
+
+                // Добавляем остальные элементы
+                var numberDiv = document.createElement('div');
+                numberDiv.innerText = item.number;
+                containerDiv.appendChild(numberDiv);
+
+                // Создаем div для заголовка работы
+                var titleDiv = document.createElement('div');
+                titleDiv.innerText = '"' + item.title + '"';
+                containerDiv.appendChild(titleDiv);
+
+                var date = new Date(item.date);
+                var options = { day: 'numeric', month: 'long', year: 'numeric' };
+                var formattedDate = date.toLocaleDateString('ru-RU', options);
+
+                var dateDiv = document.createElement('div');
+                dateDiv.innerText = formattedDate;
+                containerDiv.appendChild(dateDiv);
+
+                var statusDiv = document.createElement('div');
+                statusDiv.innerText = item.status;
+                containerDiv.appendChild(statusDiv);
+
+                // Перебираем каждого автора и создаем div для каждого
+                item.authors.forEach(function(author, index) {
+                    var authorLink = document.createElement('a');
+                    authorLink.href = '/myapp/About?userid=' + item.authors_id[index];
+                    authorLink.textContent = author +", ";
+                    containerDiv.appendChild(authorLink);
+                });
+
+
+                // Добавляем разделитель
+                var separatorDiv = document.createElement('div');
+                separatorDiv.innerText = "________________";
+                containerDiv.appendChild(separatorDiv);
+            });
+        }
+
+        // Добавляем общий div в элемент с id "output"
+        document.getElementById('output').appendChild(containerDiv);
+        } else {
+        }
+    };
+
+    xhr.onerror = function() {
+
+    };
+
+    xhr.send();
+}
+
+    </script>
+    <div id="output">
+        {% for work, authors in data %}
+            {% include "myapp/Snippets/BookWithAuthor.html" with work=work authors=authors %}
+        {% endfor %}
+    </div>
+</body>
+</html>

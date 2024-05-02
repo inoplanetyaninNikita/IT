@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<header>
+    {% include "myapp/Snippets/Header.html"%}
+</header>
+
+<body>
+
+    <h1>Привет, {{ author.first_name }}</h1>
+    <div><a href="{% url 'Plan' %}">План издательской деятельности</a></div>
+    <div><a href="{% url 'About' %}?userid={{ author.user_id }}">О себе</a></div>
+    <div><a href="{% url 'Logout' %}">Logout</a></div>
+
+</body>
+</html>

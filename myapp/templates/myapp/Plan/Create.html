@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+<header>
+    {% include "myapp/Snippets/Header.html"%}
+</header>
+
+<body>
+    <form method="post" action="{% url 'Plan' %}">
+        {% csrf_token %}
+        <h1>Наименование ВУЗа</h1>
+        <input type="text" name="VYZ">
+
+        <h1>Тип работы</h1>
+        <input type="text" name="Type" list="list_work">
+        <datalist id="list_work">
+            <option value="Методические указания">
+            <option value="Научная работа">
+        </datalist>
+
+        <h1>Директорат</h1>
+        <input type="text" name="Institute" list="list_institute">
+        <datalist id="list_institute">
+            <option value="Факультет ЭТФ">
+            <option value="Институт Управления и Экономики">
+        </datalist>
+
+        <h1>Название работы</h1>
+        <input type="text" name="Title">
+
+        <h1>Доп. авторы</h1>
+        <p>(Фамилия, имя, отчество)</p>
+        <input type="text" name="Authors">
+
+        <h1>Ссылка</h1>
+        <input type="text" name="Link">
+        <p></p>
+        <input type="submit" value="Регистрация работы">
+    </form>
+</body>
+</html>
