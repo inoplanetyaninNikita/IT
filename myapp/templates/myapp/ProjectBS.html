@@ -108,6 +108,7 @@
                                                 {% endif %}
                                             {% else %}
                                             {% if user.id == 2 %}
+
                                                 <a href="{% url 'PlanProject'%}?id={{ work.id}}&approve=yes" class="btn btn-success me-3 mb-3" role="button">Согласовать</a>
                                                 <a href="{% url 'PlanProject'%}?id={{ work.id}}&approve=no" class="btn btn-danger me-3 mb-3" role="button">Отклонить</a>
                                             {% else %}
