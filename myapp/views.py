@@ -45,9 +45,10 @@ class TypeOfWork(Enum):
 def createMethodBook(Institute,
                      Type: TypeOfWork,
                      Title: str,
-                     link: str):
+                     link: str,
+                     Dekanat):
     book = MethodBook(
-        university="СамГУПС",
+        university=Dekanat,
         institute=Institute,
         type_of_work=Type.value,
         name_of_work=Title,
@@ -137,10 +138,11 @@ def Plan(request):
         if request.POST.get('book') == "science":
             typeWork = typeWork.Science
 
-        work = createMethodBook(Institute=request.POST.get('vyz'),
+        work = createMethodBook(Institute=request.POST.get('Cafedra'),
                                 Type=typeWork,
                                 Title=request.POST.get('Title'),
-                                link=request.POST.get('Link'))
+                                link=request.POST.get('Link'),
+                                Dekanat=request.POST.get('Dekanat'))
 
         addAuthorToWork(work, getAuthorByUser(getUser(request)))
         for author in request.POST.get('Authors').split(","):

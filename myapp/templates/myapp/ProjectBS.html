@@ -67,13 +67,13 @@
                                             <label for="email-horizontal">Директорат (Деконат)</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <p class="form-control-static" id="staticInput">ИУЭ</p>
+                                            <p class="form-control-static" id="staticInput">{{ work.university }}</p>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="email-horizontal">Кафедра</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <p class="form-control-static" id="staticInput">ИУЭ</p>
+                                            <p class="form-control-static" id="staticInput">{{ work.institute }}</p>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="email-horizontal">Авторы</label>
@@ -107,7 +107,7 @@
                                                 <span class="badge bg-danger">Отклонено</span>
                                                 {% endif %}
                                             {% else %}
-                                            {% if user.id == 2 %}
+                                            {% if user.id == 6 and work.institute == "ЦТ" %}
 
                                                 <a href="{% url 'PlanProject'%}?id={{ work.id}}&approve=yes" class="btn btn-success me-3 mb-3" role="button">Согласовать</a>
                                                 <a href="{% url 'PlanProject'%}?id={{ work.id}}&approve=no" class="btn btn-danger me-3 mb-3" role="button">Отклонить</a>
