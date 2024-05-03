@@ -61,6 +61,7 @@
                             <thead>
                             <tr>
                                 <th>Вид</th>
+                                <th>Кафедра</th>
                                 <th>Авторы</th>
                                 <th>Название</th>
                                 <th>Статус</th>
@@ -71,6 +72,7 @@
                             <tr onclick="window.location.href = '{% url 'PlanProject'%}' + '?id={{ work.id}}' ">
 
                                 <td>{{ work.type_of_work }}</td>
+                                <td>{{ work.institute }}</td>
                                 <td>{% for author in authors %}
                                     <div><a href="#">{{ author.last_name }}</a></div>
                                     {% endfor %}

@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Опубликовано работ</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">5</h6>
                                     </div>
                                 </div>
                             </div>
@@ -112,11 +112,11 @@
                     <div class="card-body py-4 px-4">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-xl">
-                                <img src="./assets/compiled/jpg/1.jpg" alt="Face 1">
+                                <img src="./assets/compiled/jpg/5.jpg" alt="Face 1">
                             </div>
                             <div class="ms-3 name">
                                 <h5 class="font-bold">{{ author.last_name }} {{ author.first_name }}</h5>
-                                <h6 class="text-muted mb-0">Институт УЭ</h6>
+                                <h6 class="text-muted mb-0">{% if author.id == 6 %}Зав. каф. Цифровые технологии{% else %}Цифровые технологии{% endif %}</h6>
                             </div>
                         </div>
                     </div>
@@ -140,8 +140,17 @@
                                 <img src="./assets/compiled/jpg/5.jpg">
                             </div>
                             <div class="name ms-4">
-                                <h5 class="mb-1">Москвичев Олег</h5>
-                                <h6 class="text-muted mb-0">Директор института ИУЭ</h6>
+                                <h5 class="mb-1">Романова Полина</h5>
+                                <h6 class="text-muted mb-0">Проректор по научной работе и инновациям</h6>
+                            </div>
+                        </div>
+                        <div class="recent-message d-flex px-4 py-3">
+                            <div class="avatar avatar-lg">
+                                <img src="./assets/compiled/jpg/5.jpg">
+                            </div>
+                            <div class="name ms-4">
+                                <h5 class="mb-1">Ефимова Татьяна</h5>
+                                <h6 class="text-muted mb-0">Зав. каф. Цифровые технологии</h6>
                             </div>
                         </div>
                     </div>

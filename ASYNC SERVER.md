@@ -3,7 +3,7 @@
 daphne myproject.asgi:application
 ```` 
 
-Сихрон
+Сихронизация БД
 ````
 python manage.py migrate --run-syncdb 
 ```` 
